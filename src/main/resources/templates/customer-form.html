@@ -2,23 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Customer Login</title>
+    <title>Customer Registration</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
 <h3>Customer Login</h3>
 
-<form th:action="@{/customer/processForm}" th:object="${customer}" method = "post">
+<i>Fill out the form. Asterisk (*) means required</i>
+<br><br>
 
-    First name: <input type="text" th:field="*{firstName}" />
+<form th:action="@{/processForm}" th:object="${customer}" method="POST">
 
-    <br> <br>
+    First name: <input type="text" th:field="*{firstName}"/>
 
-    Last name: <input type="text" th:field="*{lastName}" />
+    <br><br>
 
-    <br> <br>
+    Last name (*): <input type="text" th:field="*{lastName}"/>
 
-    <input type="submit" value="Submit" />
+    <!--  Show error message (if present)  -->
+    <span th:if="${#fields.hasErrors('lastName')}"
+          th:errors="*{lastName}"
+          class="error"></span>
+
+    <br><br>
+
+    <input type="submit" value="Submit"/>
 
 </form>
 
