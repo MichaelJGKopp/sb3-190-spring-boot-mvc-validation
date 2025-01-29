@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/customer")
+//@RequestMapping("/customer")
 public class CustomerController {
 
-    @GetMapping("/showForm")
+    @GetMapping("/")
     public String showForm(Model model) {
 
         model.addAttribute("customer", new Customer());
