@@ -19,6 +19,7 @@ public class CustomerController {
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
 
+        // StringTrimmerEditor: remove leading and trailing whitespace
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true); // true: trim to null if all whitespace
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 
