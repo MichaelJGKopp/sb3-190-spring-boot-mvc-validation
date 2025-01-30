@@ -40,6 +40,8 @@ public class CustomerController {
 
         System.out.println(customer);
 
+        System.out.println("Binding results: " + bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "customer-form";
         } else {
