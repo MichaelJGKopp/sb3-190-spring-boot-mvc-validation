@@ -3,6 +3,7 @@ package com.luv2code.springdemo.mvc.model;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class Customer {
@@ -17,18 +18,11 @@ public class Customer {
     @Max(value=10, message="must be less or equal to 10")
     private int freePasses;
 
+    @Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits")
+    private String postalCode;
+
     public Customer() {
 
-    }
-
-    public Customer(String firstName, String lastName) {
-        this(firstName, lastName, 0);
-    }
-
-    public Customer(String firstName, String lastName, int freePasses) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.freePasses = freePasses;
     }
 
     public String getFirstName() {
@@ -55,12 +49,21 @@ public class Customer {
         this.freePasses = freePasses;
     }
 
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", freePasses=" + freePasses +
+                ", postalCode='" + postalCode + '\'' +
                 '}';
     }
 }
