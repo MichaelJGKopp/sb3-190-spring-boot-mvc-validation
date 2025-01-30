@@ -1,5 +1,7 @@
 package com.luv2code.springdemo.mvc.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -11,13 +13,22 @@ public class Customer {
     @Size(min=1, message="is required")
     private String lastName;
 
+    @Min(value=0, message="must be greater or equal to 1")
+    @Max(value=10, message="must be less or equal to 10")
+    private int freePasses;
+
     public Customer() {
 
     }
 
     public Customer(String firstName, String lastName) {
+        this(firstName, lastName, 0);
+    }
+
+    public Customer(String firstName, String lastName, int freePasses) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.freePasses = freePasses;
     }
 
     public String getFirstName() {
@@ -34,5 +45,22 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getFreePasses() {
+        return freePasses;
+    }
+
+    public void setFreePasses(int freePasses) {
+        this.freePasses = freePasses;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", freePasses=" + freePasses +
+                '}';
     }
 }
